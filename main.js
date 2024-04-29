@@ -47,39 +47,39 @@
 
 let numeroUtente;
 let numeroPc ;
-let somma = `${numeroUtente}` + `${numeroPc}`;
 let esito;
-document.getElementById("play").addEventListener("click", play);
-
-
-function play(somma){
+document.getElementById("play").addEventListener("click",function play() {
     numeroUtente = parseInt(document.getElementById("userSlt").value);
     // let numeroUtente = parseInt( prompt())
     console.log(`il numero scelto dall'utente è : ${numeroUtente}`);
-    numeroPc = Math.floor(Math.random() * 6);
+    numeroPc = parseInt(Math.floor(Math.random() * 6));
     console.log(`il numero scelto dal pc è : ${numeroPc}`);
+    let somma = numeroUtente+numeroPc;
     // console.log(`la somma dei numeri è: ${somma}`)
     
-    // if (numeroUtente > 5){
-    //    esito = "inserisci un numero compres0 tra 0 e 5"  
-    //    console.log("il numero sceelto deve essere compreso da 0 e 5");
-    //    return esito
-    // }
+    if (numeroUtente > 5){
+        esito = "inserisci un numero compres0 tra 0 e 5"  
+        console.log("il numero sceelto deve essere compreso da 0 e 5");
+        
+    }
     if (somma % 2 == 0){
        esito = "la somma è pari" 
        console.log("il numero è pari");
-       return esito
-    }else if(somma % 2 != 0) {
+       console.log(somma)
+      
+       
+    }
+     else if(somma % 2 != 0) {
        esito = "la somma è dispari"  
        console.log("il numero è dispari");
-       return esito
+       console.log(somma)
+       
+        
     }
-    
-}
+    document.getElementById("vincitore").innerHTML = esito
+})
 
-esito = play(somma)
-document.getElementById("vincitore").innerHTML = esito 
-
+ 
 
 
 
