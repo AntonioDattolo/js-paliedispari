@@ -48,6 +48,8 @@
 let numeroUtente;
 let numeroPc ;
 let esito;
+// let scelta =  document.querySelector('input[name="pari-dispari"]:checked'); 
+// let scelta =  document.getElementById("pari") 
 document.getElementById("play").addEventListener("click",function play() {
     numeroUtente = parseInt(document.getElementById("userSlt").value);
     // let numeroUtente = parseInt( prompt())
@@ -57,24 +59,39 @@ document.getElementById("play").addEventListener("click",function play() {
     let somma = numeroUtente+numeroPc;
     // console.log(`la somma dei numeri è: ${somma}`)
     
-    if (numeroUtente > 5){
-        esito = "inserisci un numero compres0 tra 0 e 5"  
+    if (numeroUtente > 5 ){
+        esito = "inserisci un numero compreso tra 0 e 5"  
         console.log("il numero sceelto deve essere compreso da 0 e 5");
         
-    }
-    if (somma % 2 == 0){
-       esito = "la somma è pari" 
-       console.log("il numero è pari");
+    }else if(document.getElementById("pari").checked != true && document.getElementById("dispari").checked != true){
+        esito= "non hai scelto su cosa puntare"
+
+    
+    }else if (somma % 2 == 0 && document.getElementById("pari").checked){
+       esito = "la somma è pari, hai vinto" 
+       console.log("la somma è pari");
        console.log(somma)
       
        
     }
-     else if(somma % 2 != 0) {
-       esito = "la somma è dispari"  
-       console.log("il numero è dispari");
+    else if(somma % 2 != 0 && document.getElementById("dispari").checked) {
+       esito = "la somma è dispari, hai vinto"  
+       console.log("la somma è dispari, hai vinto");
        console.log(somma)
        
         
+    } else if(somma % 2 != 0 && document.getElementById("pari").checked) {
+        esito = "la somma è dispari, hai perso"  
+        console.log("la somma è dispari, hai perso");
+        console.log(somma)
+        
+         
+    }else if(somma % 2 == 0 && document.getElementById("dispari").checked) {
+        esito = "la somma è pari, hai perso"  
+        console.log("la somma è dispari, hai perso");
+        console.log(somma)
+        
+         
     }
     document.getElementById("vincitore").innerHTML = esito
 })
